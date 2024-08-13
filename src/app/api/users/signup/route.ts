@@ -2,7 +2,6 @@ import {connect} from "@/dbConfig/dbConfig"
 import User from "@/models/userModel"
 import bcryptjs from "bcryptjs"
 import {NextRequest,NextResponse} from "next/server"
-import mongoose from "mongoose"
 import { sendEmail } from "@/helpers/mailer"
 
 connect()
@@ -21,9 +20,7 @@ export async function POST(request: NextRequest)
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password,salt)
         const newUser = new User({username,email,password:hashedPassword})
-
         const savedUser = await newUser.save()
-        console.log(savedUser)
 
         await sendEmail({email:email,emailType:"VERIFY",userId:newUser._id})
 
