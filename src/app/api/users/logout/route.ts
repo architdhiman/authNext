@@ -1,8 +1,6 @@
 import {connect} from "@/dbConfig/dbConfig"
 import {NextRequest,NextResponse} from "next/server"
 
-const TOKEN_SECRET= "chaiaurcode"
-
 connect()
 
 export async function GET(req:NextRequest)

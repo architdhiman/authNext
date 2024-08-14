@@ -3,8 +3,6 @@ import {NextRequest,NextResponse} from "next/server"
 import { getTokenData } from "@/helpers/tokenData"
 import User from "@/models/userModel"
 
-const TOKEN_SECRET= "chaiaurcode"
-
 connect()
 
 export async function POST(req:NextRequest)
